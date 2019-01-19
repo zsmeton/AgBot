@@ -1,0 +1,6 @@
+ROS Workspace with Packages and Programs for the Colorado School of Mines Robotics Club AgBot Team.
+
+Library Dependencies:
+- Ubuntu 16.04 Xenial
+- ROS Kinetic Kame
+- Python 2.7
