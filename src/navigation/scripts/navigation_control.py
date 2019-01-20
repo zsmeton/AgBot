@@ -5,7 +5,7 @@ from std_msgs.msg import String
 
 # [navigation_control] uses (course_correct) <course>, 
 # (collision_state) <collision>, (end_of_field_state) <end>, 
-# (get_spline) <spline> and publishes all four wheel speeds 
+# (turning_correct) <turning> and publishes all four wheel speeds 
 # to (wheel_cmd_speed) <wheel>
 
 # This node is a TEMPLATE
@@ -19,7 +19,7 @@ def collision_callback(data):
 def end_callback(data):
     rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
 
-def spline_callback(data):
+def turning_callback(data):
     rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
 
 
@@ -37,7 +37,7 @@ def navigation_control():
     sub_end = rospy.Subscriber('end_of_field_state', String, end_callback)
     
     # Subscribes to topic 
-    sub_spline = rospy.Subscriber('get_spline', String, spline_callback)
+    sub_turning = rospy.Subscriber('turning_correct', String, turning_callback)
 
     rospy.init_node('navigation_control')
     rate = rospy.Rate(1) # 1hz
@@ -46,7 +46,7 @@ def navigation_control():
         # Publishes "TEST" to course_correct
         message = "TEST"
         pub_wheel.publish(message)
-        #rospy.spin_once()
+        #rospy.spin_once() (get_spline) <spline>
         rate.sleep()
         
 
