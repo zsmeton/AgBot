@@ -5,8 +5,7 @@ from std_msgs.msg import String
 
 # [field_vision] identifies location of crops vs path using 
 # (lidar) and publishes location relative to the center of the
-# robot in message format ‘[crop left coordinate, crops right coordinate]’
-# for all three crops to (crop_location)
+# robot for all three crops to (crop_location)
 
 # This node is a TEMPLATE
 
