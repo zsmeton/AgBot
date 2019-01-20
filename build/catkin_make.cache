@@ -1,2 +1,2 @@
-
+navigation
 -DCATKIN_DEVEL_PREFIX=/home/zsmeton/AgBot/devel -DCMAKE_INSTALL_PREFIX=/home/zsmeton/AgBot/install -G Unix Makefiles

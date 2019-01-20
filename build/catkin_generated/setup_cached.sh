@@ -7,6 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/zsmeton/AgBot/devel:$CMAKE_PREFIX_PATH"
 export PWD="/home/zsmeton/AgBot/build"
-export ROS_PACKAGE_PATH="/home/zsmeton/AgBot/src:$ROS_PACKAGE_PATH"
