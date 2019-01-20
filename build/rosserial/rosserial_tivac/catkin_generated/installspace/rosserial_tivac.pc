@@ -1,0 +1,8 @@
+prefix=/home/zsmeton/AgBot/install
+
+Name: rosserial_tivac
+Description: Description of rosserial_tivac
+Version: 0.8.0
+Cflags: 
+Libs: -L/home/zsmeton/AgBot/install/lib 
+Requires: 

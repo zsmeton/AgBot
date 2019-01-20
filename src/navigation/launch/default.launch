@@ -8,4 +8,8 @@
   <node pkg="navigation" name="sensor_jetson" type="sensor_jetson.py"/>
   <node pkg="navigation" name="spline_follower" type="spline_follower.py"/>
   <node pkg="navigation" name="navigation_control" type="navigation_control.py"/>
+  <node pkg="rosserial_python" name="motion_arduino" type="serial_node.py">
+  <param name="port" type="string" value="/dev/ttyACM0"/>
+  <param name="baud" type="int" value="57600"/>
+  </node>
 </launch>
