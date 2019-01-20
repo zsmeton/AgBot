@@ -12,4 +12,8 @@
   <param name="port" type="string" value="/dev/ttyACM0"/>
   <param name="baud" type="int" value="57600"/>
   </node>
+  <node pkg="rosserial_python" name="sensor_arduino" type="serial_node.py">
+  <param name="port" type="string" value="/dev/ttyUSB1"/>
+  <param name="baud" type="int" value="57600"/>
+  </node>
 </launch>
