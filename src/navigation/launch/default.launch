@@ -3,4 +3,5 @@
   <node pkg="navigation" name="course_correction" type="course_correction.py"/>
   <node pkg="navigation" name="field_mapper" type="field_mapper.py"/>
   <node pkg="navigation" name="end_detector" type="end_detector.py"/>
+  <node pkg="navigation" name="collision_detector" type="collision_detector.py"/>
 </launch>
