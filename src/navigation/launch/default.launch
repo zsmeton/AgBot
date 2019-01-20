@@ -6,4 +6,5 @@
   <node pkg="navigation" name="collision_detector" type="collision_detector.py"/>
   <node pkg="navigation" name="turning_pathfinder" type="turning_pathfinder.py"/>
   <node pkg="navigation" name="sensor_jetson" type="sensor_jetson.py"/>
+  <node pkg="navigation" name="navigation_control" type="navigation_control.py"/>
 </launch>
