@@ -2610,6 +2610,24 @@ navigation/preinstall:
 .PHONY : navigation/preinstall
 
 #=============================================================================
+# Directory level rules for directory sprayers
+
+# Convenience name for "all" pass in the directory.
+sprayers/all:
+
+.PHONY : sprayers/all
+
+# Convenience name for "clean" pass in the directory.
+sprayers/clean:
+
+.PHONY : sprayers/clean
+
+# Convenience name for "preinstall" pass in the directory.
+sprayers/preinstall:
+
+.PHONY : sprayers/preinstall
+
+#=============================================================================
 # Directory level rules for directory rosserial/rosserial_server
 
 # Convenience name for "all" pass in the directory.

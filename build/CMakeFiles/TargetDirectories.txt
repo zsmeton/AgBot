@@ -171,6 +171,13 @@
 /home/zsmeton/AgBot/build/navigation/CMakeFiles/install/local.dir
 /home/zsmeton/AgBot/build/navigation/CMakeFiles/test.dir
 /home/zsmeton/AgBot/build/navigation/CMakeFiles/edit_cache.dir
+/home/zsmeton/AgBot/build/sprayers/CMakeFiles/list_install_components.dir
+/home/zsmeton/AgBot/build/sprayers/CMakeFiles/install.dir
+/home/zsmeton/AgBot/build/sprayers/CMakeFiles/rebuild_cache.dir
+/home/zsmeton/AgBot/build/sprayers/CMakeFiles/install/strip.dir
+/home/zsmeton/AgBot/build/sprayers/CMakeFiles/install/local.dir
+/home/zsmeton/AgBot/build/sprayers/CMakeFiles/test.dir
+/home/zsmeton/AgBot/build/sprayers/CMakeFiles/edit_cache.dir
 /home/zsmeton/AgBot/build/rosserial/rosserial_server/CMakeFiles/list_install_components.dir
 /home/zsmeton/AgBot/build/rosserial/rosserial_server/CMakeFiles/install.dir
 /home/zsmeton/AgBot/build/rosserial/rosserial_server/CMakeFiles/rebuild_cache.dir

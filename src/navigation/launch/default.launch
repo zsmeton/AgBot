@@ -16,7 +16,9 @@
   <param name="port" type="string" value="/dev/ttyACM0"/>
   <param name="baud" type="int" value="57600"/>
   </node>
+  <node pkg="computer_vision" name="camera" type="camera.py"/>
   <node pkg="computer_vision" name="plant_vision" type="plant_vision.py"/>
   <node pkg="computer_vision" name="weed_mapper" type="weed_mapper.py"/>
+  <node pkg="sprayers" name="sprayer_manager" type="sprayer_manager.py"/>
 </launch>
 
