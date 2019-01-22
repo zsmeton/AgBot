@@ -9,4 +9,5 @@
   <node pkg="navigation" name="spline_follower" type="spline_follower.py"/>
   <node pkg="navigation" name="navigation_control" type="navigation_control.py"/>
   <node pkg="computer_vision" name="plant_vision" type="plant_vision.py"/>
+  <node pkg="computer_vision" name="weed_mapper" type="weed_mapper.py"/>
 </launch>

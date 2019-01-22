@@ -32,7 +32,7 @@ void {topic short hand}_callback(const std_msgs::String& {topic short hand}_msg)
 }
 
 // Create subsciber(s)
-ros::Subscriber<std_msgs::Bool> sub_{topic short hand}("{topic}", &{topic short hand}_callback);
+ros::Subscriber<std_msgs::String> sub_{topic short hand}("{topic}", &{topic short hand}_callback);
 
 void setup(){
   // Set mode of pins
@@ -49,8 +49,8 @@ void setup(){
 }
 
 void loop(){
-  str_msg = "TEST";
-  pub_{topic short hand}.publish(&str_msg);
+  {topic short hand}_msg.data = "TEST";
+  pub_{topic short hand}.publish(&{topic short hand}_msg);
   nh.spinOnce();
   delay(1000); // 1HZish
 }

@@ -1,0 +1,8 @@
+prefix=/home/zsmeton/AgBot/devel
+
+Name: computer_vision
+Description: Description of computer_vision
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/zsmeton/AgBot/devel/lib 
+Requires: 

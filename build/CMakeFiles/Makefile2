@@ -2410,6 +2410,188 @@ clean: rosserial/rosserial_client/CMakeFiles/clean_test_results_rosserial_client
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory computer_vision
+
+# Convenience name for "all" pass in the directory.
+computer_vision/all:
+
+.PHONY : computer_vision/all
+
+# Convenience name for "clean" pass in the directory.
+computer_vision/clean: computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+computer_vision/clean: computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+computer_vision/clean: computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+computer_vision/clean: computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+computer_vision/clean: computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+
+.PHONY : computer_vision/clean
+
+# Convenience name for "preinstall" pass in the directory.
+computer_vision/preinstall:
+
+.PHONY : computer_vision/preinstall
+
+#=============================================================================
+# Target rules for target computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir
+
+# All Build rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_nodejs"
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_nodejs: computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_msgs_generate_messages_nodejs
+
+# clean rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+
+# clean rule for target.
+clean: computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir
+
+# All Build rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_py: computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+
+.PHONY : std_msgs_generate_messages_py
+
+# clean rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+
+# clean rule for target.
+clean: computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir
+
+# All Build rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_lisp"
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_lisp: computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : std_msgs_generate_messages_lisp
+
+# clean rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+
+# clean rule for target.
+clean: computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir
+
+# All Build rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_eus"
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_eus: computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+.PHONY : std_msgs_generate_messages_eus
+
+# clean rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+
+# clean rule for target.
+clean: computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir
+
+# All Build rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : std_msgs_generate_messages_cpp
+
+# clean rule for target.
+computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+.PHONY : computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+
+# clean rule for target.
+clean: computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Directory level rules for directory navigation
 
 # Convenience name for "all" pass in the directory.
@@ -2418,11 +2600,7 @@ navigation/all:
 .PHONY : navigation/all
 
 # Convenience name for "clean" pass in the directory.
-navigation/clean: navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-navigation/clean: navigation/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-navigation/clean: navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-navigation/clean: navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-navigation/clean: navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+navigation/clean:
 
 .PHONY : navigation/clean
 
@@ -2430,166 +2608,6 @@ navigation/clean: navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 navigation/preinstall:
 
 .PHONY : navigation/preinstall
-
-#=============================================================================
-# Target rules for target navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir
-
-# All Build rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_nodejs"
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# clean rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-
-# clean rule for target.
-clean: navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target navigation/CMakeFiles/std_msgs_generate_messages_py.dir
-
-# All Build rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_py.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_py.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-navigation/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 navigation/CMakeFiles/std_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: navigation/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# clean rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_py.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-
-# clean rule for target.
-clean: navigation/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir
-
-# All Build rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_lisp"
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# clean rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-
-# clean rule for target.
-clean: navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target navigation/CMakeFiles/std_msgs_generate_messages_eus.dir
-
-# All Build rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_eus"
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-
-# Build rule for subdir invocation for target.
-navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# clean rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-
-# clean rule for target.
-clean: navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir
-
-# All Build rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zsmeton/AgBot/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zsmeton/AgBot/build/CMakeFiles 0
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# clean rule for target.
-navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-.PHONY : navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-
-# clean rule for target.
-clean: navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-
-.PHONY : clean
 
 #=============================================================================
 # Directory level rules for directory rosserial/rosserial_server
@@ -3085,11 +3103,11 @@ rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: ross
 rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_nodejs.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_eus.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_py.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: rosserial/rosserial_server/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: rosserial/rosserial_server/CMakeFiles/roscpp_generate_messages_py.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_serial_node.dir/all: rosserial/rosserial_server/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
@@ -3178,11 +3196,11 @@ rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: ross
 rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_nodejs.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_eus.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_py.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: rosserial/rosserial_server/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: rosserial/rosserial_server/CMakeFiles/roscpp_generate_messages_py.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_socket_node.dir/all: rosserial/rosserial_server/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
@@ -3239,11 +3257,11 @@ rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: 
 rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_nodejs.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_eus.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_py.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: rosserial/rosserial_server/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: rosserial/rosserial_server/CMakeFiles/roscpp_generate_messages_py.dir/all
 rosserial/rosserial_server/CMakeFiles/rosserial_server_udp_socket_node.dir/all: rosserial/rosserial_server/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
@@ -3445,11 +3463,11 @@ rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: rosser
 rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_nodejs.dir/all
 rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_py.dir/all
 rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: rosserial/rosserial_msgs/CMakeFiles/rosserial_msgs_generate_messages_eus.dir/all
-rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_py.dir/all
-rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: navigation/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_py.dir/all
+rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: computer_vision/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: rosserial/rosserial_server/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: rosserial/rosserial_server/CMakeFiles/roscpp_generate_messages_py.dir/all
 rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/all: rosserial/rosserial_server/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
