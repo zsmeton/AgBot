@@ -1,8 +1,0 @@
-prefix=/home/zsmeton/AgBot/install
-
-Name: sprayers
-Description: Description of sprayers
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/zsmeton/AgBot/install/lib 
-Requires: 

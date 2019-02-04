@@ -1,8 +1,0 @@
-prefix=/home/zsmeton/AgBot/install
-
-Name: rosserial_msgs
-Description: Description of rosserial_msgs
-Version: 0.8.0
-Cflags: -I/home/zsmeton/AgBot/install/include
-Libs: -L/home/zsmeton/AgBot/install/lib 
-Requires: message_runtime
