@@ -9,15 +9,15 @@
   <node pkg="navigation" name="spline_follower" type="spline_follower.py"/>
   <node pkg="navigation" name="navigation_control" type="navigation_control.py"/>
   <node pkg="rosserial_python" name="motion_arduino" type="serial_node.py">
+  <param name="port" type="string" value="/dev/ttyUSB1"/>
+  <param name="baud" type="int" value="57600"/>
+  </node>
+  <node pkg="rosserial_python" name="sensor_arduino" type="serial_node.py">
+  <param name="port" type="string" value="/dev/ttyACM0"/>
+  <param name="baud" type="int" value="57600"/>
+  </node>
+  <node pkg="rosserial_python" name="sprayer_arduino" type="serial_node.py">
   <param name="port" type="string" value="/dev/ttyUSB0"/>
-  <param name="baud" type="int" value="57600"/>
-  </node>
-  <node pkg="rosserial_python" name="sensor_arduino" type="serial_node.py">
-  <param name="port" type="string" value="/dev/ttyACM0"/>
-  <param name="baud" type="int" value="57600"/>
-  </node>
-  <node pkg="rosserial_python" name="sensor_arduino" type="serial_node.py">
-  <param name="port" type="string" value="/dev/ttyACM0"/>
   <param name="baud" type="int" value="57600"/>
   </node>
   <node pkg="computer_vision" name="camera" type="camera.py"/>
