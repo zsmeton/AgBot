@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # license removed for brevity
 import rospy
-import std_msgs.msg as msg
+from std_msgs.msg import Bool
 
 # [collision_detector] uses (ultrasonic) to detect when 
 # ultrasonic is activated. If bumper is activated robot stops, turn 
@@ -25,13 +25,13 @@ def safety_callback(data):
 
 def collision_detector():
     # Publisher to topic collision_state
-    pub_collision = rospy.Publisher('collision_state', msg.Bool, queue_size=10)
+    pub_collision = rospy.Publisher('collision_state', Bool, queue_size=10)
 
     # Subscribes to topic bumper_button
-    sub_bump = rospy.Subscriber('ultrasonic', msg.Bool, bump_callback)
+    sub_ultrasonic = rospy.Subscriber('ultrasonic', Bool, ultrasonic_callback)
 
     # Subscibes to topic safety_button
-    sub_safety = rospy.Subscriber('safety_button', msg.Bool, safety_callback)
+    sub_safety = rospy.Subscriber('safety_button', Bool, safety_callback)
 
     rospy.init_node('collision_detector')
     rate = rospy.Rate(1) # 1hz
@@ -39,7 +39,6 @@ def collision_detector():
     while not rospy.is_shutdown():
         # Publishes collision state var to collision_state
         pub_collision.publish(collision_state)
-        #rospy.spin_once()
         rate.sleep()
         
 
