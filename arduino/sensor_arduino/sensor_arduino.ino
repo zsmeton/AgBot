@@ -6,8 +6,8 @@
 #include <std_msgs/Bool.h>
 #include "UltrasonicSensor.h"
 
-/* [sensor_arduino] pulls bumper button state and publish 
-*  to (bumper_button) <bump>, pulls safety button state and 
+/* [sensor_arduino] pulls ultrasonic sensor state and publish 
+*  to (ultra_detection) <ultra>, pulls safety button state and 
 *  publishes to (safety_button) <safety>, pulls wheel 
 *  encoders and published to (drive_wheel_encoder) <encoder>, 
 *  pulls compass data and published to (compass) <compass>, 
@@ -25,14 +25,14 @@ const int ledPin = 13;
 ros::NodeHandle  nh;
 
 // Create message object(s) for pub/sub 
-std_msgs::Bool bump_msg;
+std_msgs::Bool ultra_msg;
 std_msgs::String safety_msg;
 std_msgs::String encoder_msg;
 std_msgs::String compass_msg;
 std_msgs::String gps_msg;
 
 // Create publisher(s)
-ros::Publisher pub_bump("bumper_button", &bump_msg);
+ros::Publisher pub_ultra("ultra_detection", &ultra_msg);
 ros::Publisher pub_safety("safety_button", &safety_msg);
 ros::Publisher pub_encoder("drive_wheel_encoder", &encoder_msg);
 ros::Publisher pub_compass("compass", &compass_msg);
@@ -43,6 +43,7 @@ UltrasonicSensor ultrasonic1 = UltrasonicSensor(7,6,6);
 UltrasonicSensor ultrasonic2 = UltrasonicSensor(5,4,6);
 
 void setup(){
+  Serial.begin(9600);
   // Set mode of pins
   pinMode(ledPin, OUTPUT);
   
@@ -50,7 +51,7 @@ void setup(){
   nh.initNode();
 
   // Advertise topic(s)
-  nh.advertise(pub_bump);
+  nh.advertise(pub_ultra);
   nh.advertise(pub_safety);
   nh.advertise(pub_encoder);
   nh.advertise(pub_compass);
@@ -58,9 +59,9 @@ void setup(){
 }
 
 void loop(){
-  bool bump = (ultrasonic1.obstruction() || ultrasonic1.obstruction());
-  bump_msg.data = bump;
-  pub_bump.publish(&bump_msg);
+  bool ultra = (ultrasonic1.obstruction() || ultrasonic1.obstruction());
+  ultra_msg.data = ultra;
+  pub_ultra.publish(&ultra_msg);
 
   safety_msg.data = "TEST";
   pub_safety.publish(&safety_msg);
@@ -75,5 +76,5 @@ void loop(){
   pub_gps.publish(&gps_msg);
   
   nh.spinOnce();
-  delay(1000); // 1HZish
+  delay(500); // 2HZish
 }

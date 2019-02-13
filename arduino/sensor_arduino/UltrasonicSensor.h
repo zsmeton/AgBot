@@ -12,7 +12,7 @@ class UltrasonicSensor{
   
   // Send kill switch
   int tooCloseDistance;
-  const int MINIMUM_RANGE = 5; // 5 cm
+  const int MINIMUM_RANGE = 1; // 5 cm
   int distance;
   long duration;
 
@@ -27,10 +27,16 @@ class UltrasonicSensor{
       // set up pins
       pinMode(trigPin, OUTPUT);
       pinMode(echoPin, INPUT);
-      
     }
 
     bool obstruction(){
+      // Get the distance then check if an object is too close
+      // Return tooClose (true, obstruction, false, no obstruction
+      distance = getDistance();
+      return (distance <= tooCloseDistance && distance >= MINIMUM_RANGE);
+    }
+
+    float getDistance(){
       /* The following trigPin/echoPin cycle is used to determine the
       distance of the nearest object by bouncing soundwaves off of it. */
       digitalWrite(trigPin, LOW);
@@ -44,8 +50,8 @@ class UltrasonicSensor{
   
       //Calculate the distance (in cm) based on the speed of sound.
       distance = duration/DURATION_TO_CM;
+      return distance;
 
-      return (distance <= tooCloseDistance && distance >= MINIMUM_RANGE);
     }
 };
 
