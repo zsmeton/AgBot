@@ -3,6 +3,8 @@
 #include <ros.h>
 // Include message header files
 #include <std_msgs/String.h>
+#include <std_msgs/Bool.h>
+#include "UltrasonicSensor.h"
 
 /* [sensor_arduino] pulls bumper button state and publish 
 *  to (bumper_button) <bump>, pulls safety button state and 
@@ -23,7 +25,7 @@ const int ledPin = 13;
 ros::NodeHandle  nh;
 
 // Create message object(s) for pub/sub 
-std_msgs::String bump_msg;
+std_msgs::Bool bump_msg;
 std_msgs::String safety_msg;
 std_msgs::String encoder_msg;
 std_msgs::String compass_msg;
@@ -35,6 +37,10 @@ ros::Publisher pub_safety("safety_button", &safety_msg);
 ros::Publisher pub_encoder("drive_wheel_encoder", &encoder_msg);
 ros::Publisher pub_compass("compass", &compass_msg);
 ros::Publisher pub_gps("gps", &gps_msg);
+
+// create sensor instances
+UltrasonicSensor ultrasonic1 = UltrasonicSensor(7,6,6);
+UltrasonicSensor ultrasonic2 = UltrasonicSensor(5,4,6);
 
 void setup(){
   // Set mode of pins
@@ -52,7 +58,8 @@ void setup(){
 }
 
 void loop(){
-  bump_msg.data = "TEST";
+  bool bump = (ultrasonic1.obstruction() || ultrasonic1.obstruction());
+  bump_msg.data = bump;
   pub_bump.publish(&bump_msg);
 
   safety_msg.data = "TEST";
