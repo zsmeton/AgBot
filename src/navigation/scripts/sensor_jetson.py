@@ -16,9 +16,16 @@ def sensor_jetson():
     rospy.init_node('sensor_jetson')
     rate = rospy.Rate(1) # 1hz
     
+    test = [1.232, 2.1232, 1.2324, 2.2123, 4.2321, 10.32, 11.231, 1.2032,1.32]
+    i = 0
+
     while not rospy.is_shutdown():
         # Publishes "TEST" to course_correct
-        message = "TEST"
+        if(i == len(test)):
+            i = 0
+        message = str(test[i])
+        i = i + 1
+        #rospy.loginfo(message)
         pub_lidar.publish(message)
         #rospy.spin_once()
         rate.sleep()
@@ -29,3 +36,4 @@ if __name__ == '__main__':
         sensor_jetson()
     except rospy.ROSInterruptException:
         pass
+
