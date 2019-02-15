@@ -28,7 +28,7 @@ def collision_detector():
     pub_collision = rospy.Publisher('collision_state', Bool, queue_size=10)
 
     # Subscribes to topic bumper_button
-    sub_ultrasonic = rospy.Subscriber('ultrasonic', Bool, ultrasonic_callback)
+    sub_ultrasonic = rospy.Subscriber('ultra_detection', Bool, ultrasonic_callback)
 
     # Subscibes to topic safety_button
     sub_safety = rospy.Subscriber('safety_button', Bool, safety_callback)
