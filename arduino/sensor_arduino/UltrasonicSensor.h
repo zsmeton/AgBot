@@ -1,8 +1,8 @@
 #ifndef ULTRASONICSENSOR_H
 #define ULTRASONICSENSOR_H
 
-const int DURATION_TO_CM = 58.2;
-const int CM_TO_FEET = 30.48;
+static const int DURATION_TO_CM = 58.2;
+static const int METERS_TO_CM = 100;
 
 class UltrasonicSensor{
   private:
@@ -17,12 +17,12 @@ class UltrasonicSensor{
   long duration;
 
   public:
-    // tooCloseDistance in feet
+    // tooCloseDistance in meters
     UltrasonicSensor(int echoPin, int trigPin, int tooCloseDistance){
       this -> trigPin = trigPin;
       this -> echoPin = echoPin;
       // feet to cm
-      this -> tooCloseDistance = tooCloseDistance * CM_TO_FEET;
+      this -> tooCloseDistance = tooCloseDistance * METERS_TO_CM;
 
       // set up pins
       pinMode(trigPin, OUTPUT);
@@ -51,7 +51,18 @@ class UltrasonicSensor{
       //Calculate the distance (in cm) based on the speed of sound.
       distance = duration/DURATION_TO_CM;
       return distance;
+    }
 
+    void setEchoPin(int pin){
+      echoPin = pin;
+    }
+
+    void setTrigPin(int pin){
+      echoPin = pin;
+    }
+
+    void setStopDist(int dist){
+      tooCloseDistance = dist * METERS_TO_CM;
     }
 };
 

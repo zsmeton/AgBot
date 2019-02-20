@@ -6,25 +6,27 @@
 #include <std_msgs/Bool.h>
 #include "UltrasonicSensor.h"
 
-/* [sensor_arduino] pulls ultrasonic sensor state and publish 
-*  to (ultra_detection) <ultra>, pulls safety button state and 
-*  publishes to (safety_button) <safety>, pulls wheel 
-*  encoders and published to (drive_wheel_encoder) <encoder>, 
-*  pulls compass data and published to (compass) <compass>, 
-*  pulls gps info and publishes to (gps) <gps>
+/* [sensor_arduino] pulls ultrasonic sensor state and publish
+   to (ultra_detection) <ultra>, pulls safety button state and
+   publishes to (safety_button) <safety>, pulls wheel
+   encoders and published to (drive_wheel_encoder) <encoder>,
+   pulls compass data and published to (compass) <compass>,
+   pulls gps info and publishes to (gps) <gps>
 */
 
 // This node is a TEMPLATE
-
-// Create any pin objects
-const int ledPin = 13;
 
 // Create the node handle which allows creation
 // of publishers and subscribers and does serial
 // communication
 ros::NodeHandle  nh;
 
-// Create message object(s) for pub/sub 
+
+// Get ROS Parameters:
+float stopping_distance = 1.8288; // default to 6 meters
+
+
+// Create message object(s) for pub/sub
 std_msgs::Bool ultra_msg;
 std_msgs::String safety_msg;
 std_msgs::String encoder_msg;
@@ -39,14 +41,13 @@ ros::Publisher pub_compass("compass", &compass_msg);
 ros::Publisher pub_gps("gps", &gps_msg);
 
 // create sensor instances
-UltrasonicSensor ultrasonic1 = UltrasonicSensor(7,6,6);
-UltrasonicSensor ultrasonic2 = UltrasonicSensor(5,4,6);
+UltrasonicSensor ultrasonic1 = UltrasonicSensor(7, 6, 2);
+UltrasonicSensor ultrasonic2 = UltrasonicSensor(5, 4, 2);
 
-void setup(){
+void setup() {
   Serial.begin(9600);
   // Set mode of pins
-  pinMode(ledPin, OUTPUT);
-  
+
   // Initialize the arduino node
   nh.initNode();
 
@@ -56,25 +57,55 @@ void setup(){
   nh.advertise(pub_encoder);
   nh.advertise(pub_compass);
   nh.advertise(pub_gps);
+
+  //getROSParameters();
 }
 
-void loop(){
+void loop() {
   bool ultra = (ultrasonic1.obstruction() || ultrasonic1.obstruction());
   ultra_msg.data = ultra;
   pub_ultra.publish(&ultra_msg);
 
   safety_msg.data = "TEST";
   pub_safety.publish(&safety_msg);
-  
+
   encoder_msg.data = "TEST";
   pub_encoder.publish(&encoder_msg);
-  
+
   compass_msg.data = "TEST";
   pub_compass.publish(&compass_msg);
-  
+
   gps_msg.data = "TEST";
   pub_gps.publish(&gps_msg);
-  
+
   nh.spinOnce();
-  delay(500); // 2HZish
+  delay(10); // 2HZish
+}
+
+void getROSParameters() {
+  while (!nh.connected()) {
+    nh.spinOnce();
+  }
+  int ultrasonic10;
+  int ultrasonic11;
+  int ultrasonic20;
+  int ultrasonic21;
+  int stop_dist;
+
+  if (nh.getParam("~ultrasonic1_echo", &ultrasonic10)) {
+    ultrasonic1.setEchoPin(ultrasonic10);
+  }
+  if (nh.getParam("~ultrasonic1_trig", &ultrasonic11)) {
+    ultrasonic1.setTrigPin(ultrasonic11);
+  }
+  if (nh.getParam("~ultrasonic2_echo", &ultrasonic20)) {
+    ultrasonic2.setEchoPin(ultrasonic20);
+  }
+  if (nh.getParam("~ultrasonic2_trig", &ultrasonic21)) {
+    ultrasonic2.setTrigPin(ultrasonic21);
+  }
+  if (nh.getParam("~stopping_distance", &stop_dist, 1)) {
+    ultrasonic1.setStopDist(stop_dist);
+    ultrasonic2.setStopDist(stop_dist);
+  }
 }
