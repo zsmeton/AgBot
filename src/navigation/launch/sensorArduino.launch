@@ -1,0 +1,11 @@
+<launch>
+  <node pkg="rosserial_python" name="sensor_arduino" type="serial_node.py">
+  <param name="port" type="string" value="/dev/ttyACM0"/>
+  <param name="baud" type="int" value="57600"/>
+  <param name="ultrasonic1_trig" type="int" value="6"/>
+  <param name="ultrasonic1_echo" type="int" value="8"/>
+  <param name="ultrasonic2_trig" type="int" value="4"/>
+  <param name="ultrasonic2_echo" type="int" value="5"/>
+  <param name="stopping_distance" type="int" value="2"/>
+  </node>  
+</launch>

@@ -1,8 +1,8 @@
 #ifndef ULTRASONICSENSOR_H
 #define ULTRASONICSENSOR_H
 
-const int DURATION_TO_CM = 58.2;
-const int CM_TO_FEET = 30.48;
+static const int DURATION_TO_CM = 58.2;
+static const int METERS_TO_CM = 100;
 
 class UltrasonicSensor{
   private:
@@ -12,25 +12,31 @@ class UltrasonicSensor{
   
   // Send kill switch
   int tooCloseDistance;
-  const int MINIMUM_RANGE = 5; // 5 cm
+  const int MINIMUM_RANGE = 1; // 5 cm
   int distance;
   long duration;
 
   public:
-    // tooCloseDistance in feet
+    // tooCloseDistance in meters
     UltrasonicSensor(int echoPin, int trigPin, int tooCloseDistance){
       this -> trigPin = trigPin;
       this -> echoPin = echoPin;
       // feet to cm
-      this -> tooCloseDistance = tooCloseDistance * CM_TO_FEET;
+      this -> tooCloseDistance = tooCloseDistance * METERS_TO_CM;
 
       // set up pins
       pinMode(trigPin, OUTPUT);
       pinMode(echoPin, INPUT);
-      
     }
 
     bool obstruction(){
+      // Get the distance then check if an object is too close
+      // Return tooClose (true, obstruction, false, no obstruction
+      distance = getDistance();
+      return (distance <= tooCloseDistance && distance >= MINIMUM_RANGE);
+    }
+
+    float getDistance(){
       /* The following trigPin/echoPin cycle is used to determine the
       distance of the nearest object by bouncing soundwaves off of it. */
       digitalWrite(trigPin, LOW);
@@ -44,8 +50,19 @@ class UltrasonicSensor{
   
       //Calculate the distance (in cm) based on the speed of sound.
       distance = duration/DURATION_TO_CM;
+      return distance;
+    }
 
-      return (distance <= tooCloseDistance && distance >= MINIMUM_RANGE);
+    void setEchoPin(int pin){
+      echoPin = pin;
+    }
+
+    void setTrigPin(int pin){
+      echoPin = pin;
+    }
+
+    void setStopDist(int dist){
+      tooCloseDistance = dist * METERS_TO_CM;
     }
 };
 
