@@ -1,6 +1,0 @@
-build
-build/*
-devel
-.catkin_workspace
-idea
-.idea/
