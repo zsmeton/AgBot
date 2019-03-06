@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # license removed for brevity
 import rospy
-from std_msgs.msg import String, Bool
+from std_msgs.msg import String, Bool, Float32, Float32MultiArray
 
 # [navigation_control] uses (course_correct) <course>, 
 # (collision_state) <collision>, (end_of_field_state) <end>, 
@@ -34,7 +34,7 @@ def navigation_control():
     sub_collision = rospy.Subscriber('collision_state', Bool, collision_callback)
 
     # Subscribes to topic 
-    sub_end = rospy.Subscriber('end_of_field_state', String, end_callback)
+    sub_end = rospy.Subscriber('end_of_field_state', Bool, end_callback)
     
     # Subscribes to topic 
     sub_turning = rospy.Subscriber('turning_correct', String, turning_callback)

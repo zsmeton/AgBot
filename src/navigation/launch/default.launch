@@ -4,7 +4,10 @@
   <node pkg="navigation" name="field_mapper" type="field_mapper.py"/>
   <node pkg="navigation" name="end_detector" type="end_detector.py"/>
   <node pkg="navigation" name="collision_detector" type="collision_detector.py"/>
-  <node pkg="navigation" name="turning_pathfinder" type="turning_pathfinder.py"/>
+  <node pkg="navigation" name="turning_pathfinder" type="turning_pathfinder.py">
+    <param name="row_skip" type="int" value="1"/>
+    <param name="outer_speed_max" type="int" value="2"/>
+  </node>
   <node pkg="navigation" name="sensor_jetson" type="sensor_jetson.py"/>
   <node pkg="navigation" name="spline_follower" type="spline_follower.py"/>
   <node pkg="navigation" name="navigation_control" type="navigation_control.py"/>
@@ -29,5 +32,6 @@
   <node pkg="computer_vision" name="plant_vision" type="plant_vision.py"/>
   <node pkg="computer_vision" name="weed_mapper" type="weed_mapper.py"/>
   <node pkg="sprayers" name="sprayer_manager" type="sprayer_manager.py"/>
+  <node pkg="hokuyo_node" name="lidar" type="hokuyo_node.cpp"/>
 </launch>
 
