@@ -4,27 +4,45 @@ import rospy
 from std_msgs.msg import String
 from std_msgs.msg import Bool
 from sensor_msgs.msg import LaserScan
+import numpy as np
 
 # [end_detector] detects when at end of field using (lidar) 
 # and published boolean to (end_of_field_state)
 
 # This node is a TEMPLATE
-i = 0
-avg_diff = []
-distance = [0]
-message = False
+message = True
+previous = []
+counter = 0;
 def lidar_callback(msg):
-    #rospy.loginfo(data.data)
-    global i
-    global avg_diff
-    global distance
-    print 'Value at 0*: '
-    print msg.ranges[0]
-    print 'Value at 90*: '
-    print msg.ranges[360]
-    print 'Value at 180*: '
-    print msg.ranges[719]
-    print ' '
+    global message
+    global previous
+    global counter
+    print(msg.ranges[180*4])
+    if(counter == 0):
+        for p in range(721):
+            previous.append(msg.ranges[p])
+            counter = 1
+        print(previous[180*4])
+    elif(counter != 0):
+        check_two = 0
+        for i in range(721):
+            check_two = abs(msg.ranges[i] - previous[i])
+            #Crops are around 6 - 12 inches tall
+            #1 inch = 0.0254 m   |   0.3048 m = 12 inches
+
+            #I am following the measurements said by AgBot,
+            #We might need to change this in the future.cle
+
+            if(check_two > 0.3048):
+                message = False
+                break
+            elif(check_two < 0.3048):
+                message = True
+            elif(i == 180*4):
+                print(check_two)
+            counter = 0
+    print(message)
+    print("  ")
 
 def end_detector():
     # Publisher to topic crop_lcation
@@ -36,8 +54,9 @@ def end_detector():
     rate = rospy.Rate(1) # 1hz
     
     while not rospy.is_shutdown():
-        #pub_end.publish(message)
-        #rospy.loginfo(sub_lidar)
+        global message
+        pub_end.publish(message)
+        #rospy.loginfo(message)
         #rospy.spin_once()
         rate.sleep()
         
