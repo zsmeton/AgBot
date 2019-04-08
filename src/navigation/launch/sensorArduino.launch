@@ -1,6 +1,11 @@
 <launch>
   <node pkg="rosserial_python" name="sensor_arduino" type="serial_node.py">
-    <param name="port" type="string" value="/dev/ttyACM0"/>
+    <param name="port" type="string" value="/dev/ttyACM0"/><!-- set a private parameter for the node -->
+      <param name="talker_1_param" value="a value" />
+      <!-- nodes can have their own remap args -->
+      <remap from="chatter" to="hello-1"/>
+      <!-- you can set environment variables for a node -->
+      <env name="ENV_EXAMPLE" value="some value" />
     <param name="baud" type="int" value="57600"/>
     <param name="ultrasonic1_trig" type="int" value="6"/>
     <param name="ultrasonic1_echo" type="int" value="8"/>

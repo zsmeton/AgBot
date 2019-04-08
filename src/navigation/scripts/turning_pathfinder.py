@@ -44,6 +44,8 @@ def get_parameters():
         global pub_params
         pub_params.publish(rospy.get_name()+ "  " +str(params_exits))
 
+def get_wheel_speeds():
+	""" returns the """
 
 def turning_pathfinder():
     

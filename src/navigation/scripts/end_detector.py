@@ -9,7 +9,6 @@ import numpy as np
 # [end_detector] detects when at end of field using (lidar) 
 # and published boolean to (end_of_field_state)
 
-# This node is a TEMPLATE
 message = True
 previous = []
 counter = 0;
@@ -19,14 +18,14 @@ def lidar_callback(msg):
     global counter
     print(msg.ranges[180*4])
     if(counter == 0):
-        for p in range(721):
-            previous.append(msg.ranges[p])
+        for data in msg.ranges:
+            previous.append(data)
             counter = 1
         print(previous[180*4])
     elif(counter != 0):
         check_two = 0
-        for i in range(721):
-            check_two = abs(msg.ranges[i] - previous[i])
+        for i,data in enumerate(msg.ranges):
+            check_two = abs(data - previous[i])
             #Crops are around 6 - 12 inches tall
             #1 inch = 0.0254 m   |   0.3048 m = 12 inches
 
