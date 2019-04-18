@@ -88,7 +88,7 @@ def get_parameters():
     params_exits = False
     if rospy.has_param('~row_guess'):
         global crop_location_guess
-        crop_location_guess = rospy.get_param('~row_guess').
+        crop_location_guess = rospy.get_param('~row_guess')
 
 
 def lidar_callback(msg):
