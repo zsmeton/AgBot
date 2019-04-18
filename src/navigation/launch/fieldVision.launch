@@ -2,7 +2,7 @@
   <node pkg="navigation" name="field_vision" type="field_vision.py">
     <param name="row_guess" value="[-5,5]"/>
   </node>
-  <node pkg="hokuyo_node" name="lidar" type="hokuyo_node.cpp">
+  <node pkg="hokuyo_node" name="lidar" type="hokuyo_node"/>
     <param name="port" type="string" value="/dev/ttyACM0"/>
   </node>
 </launch>
