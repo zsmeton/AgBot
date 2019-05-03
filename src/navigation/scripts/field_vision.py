@@ -29,6 +29,8 @@ def isinf(x): inf = 1e5000; return x == inf or x == -inf
 DEBUG = False
 MODALS = 3
 call_back = False
+# TODO: Add ros_params to set desired_angle_min and max
+# TODO: Add system to not publish row locations until lidar data comes in
 desired_angle_min = -0.6
 desired_angle_max = 0.6
 x = np.linspace(-10, 10)
@@ -39,7 +41,6 @@ vvariable_mapping = np.vectorize(variable_mapping)
 
 def get_parameters():
     """ Sets the ros parameters if they exist"""
-    params_exits = False
     if rospy.has_param('~row_guess'):
         global crop_location_guess
         crop_location_guess = rospy.get_param('~row_guess')
@@ -48,8 +49,6 @@ def get_parameters():
 def lidar_callback(msg):
     global call_back
     call_back = True
-    global y
-    global x
     # Create a vector of angles from the minimum angle to the maximum angle of the length of the message data
     angles = np.linspace(msg.angle_min, msg.angle_max, len(msg.ranges))
     # Set radius to the data from the message
@@ -67,11 +66,17 @@ def lidar_callback(msg):
         counter += 1
     radius = np.array(radius)
     # Sets x and y to the coordinates of the scanner points in meters
+    global x
     x = np.sin(angles) * radius
     y = np.cos(angles) * radius
 
     # Map the values of y from 0 to 1 for better multimodal analysis
-    y = vvariable_mapping(y, y.min(), y.max(), 0, 1)
+    try:
+        global y
+        y = vvariable_mapping(y, y.min(), y.max(), 0, 1)
+    except ZeroDivisionError:
+        print("Could not properly map lidar data, using old lidar data for detection")
+
 
 
 def crop_location_to_ros_msg(crop_location):
@@ -95,11 +100,23 @@ def field_vision():
     rospy.init_node('field_vision')
     rate = rospy.Rate(1)  # 1hz
 
+    # set up plotting for visualization
+    plt.ion()
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    lidar_line, = ax.plot(x, y)
+    crop_location_line = ax.scatter(crop_location_guess, np.zeros(len(crop_location_guess)), c='r', marker='+')
+
+
     while not rospy.is_shutdown():
         # Align the data for modeling
         xa, ya, sclr = align_data(tuple(x), tuple(y))
         # Model the data
-        crop_guess_temp = find_rows(xa, ya, crop_location_guess)
+        try:
+            crop_guess_temp = find_rows(xa, ya, crop_location_guess)
+        except RuntimeError:
+            print("Could not find optimal parameters")
+            continue
 
         if DEBUG:
             # Plot aligned data and model
@@ -115,13 +132,13 @@ def field_vision():
         a, b, c = crop_guess_temp
         pub_crop.publish(crop_location_to_ros_msg(crop_guess_temp))
 
-        if DEBUG:
-            # Plot the data for debugging
-            plt.scatter(x, y)  # plot the original lidar data
-            plt.plot(x, three_peaks(x, a, b, c), '--r')  # plot the estimation
-            plt.scatter(crop_guess_temp, np.zeros(len(crop_guess_temp)), c='r', marker='+')  # plot the crop location guesses
-            plt.title("LIDAR data and modeling")
-            plt.show()
+        # Plot the data for visualization
+        lidar_line.set_xdata(x)
+        lidar_line.set_ydata(y)
+        crop_location_line.set_offsets(np.c_[crop_guess_temp, np.zeros(len(crop_guess_temp))])
+        ax.relim()
+        ax.autoscale_view()
+        fig.canvas.draw()
 
         rate.sleep()
 
