@@ -1,0 +1,11 @@
+scan_filter_chain:
+- name: range
+  type: LaserScanAngularBoundsFilter
+  params:
+    lower_angle: -0.6869
+    upper_angle: 0.6869
+    
+# range = arctan((desired_range/2)/(height/cos(angle)))
+# max_angle = range
+# min_angle = -range 
+# 0 degree, 6ft desired, 4ft height = (0.6869, -0.6869)

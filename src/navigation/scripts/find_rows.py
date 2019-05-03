@@ -31,7 +31,7 @@ def bi_modal_gaussian(c):
     g(c)
         c : length 2 array like
     evaluates a bi-modal gaussian with respect to 2 parameters,
-    each specifying the center of one of the modes.
+    each specifying the center o/home/zsmeton/Downloads/example.pyf one of the modes.
     '''
     return -np.exp(-(x - c[0]) ** 2) - np.exp(-(x - c[1]) ** 2)
 

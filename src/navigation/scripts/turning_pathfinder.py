@@ -8,7 +8,6 @@ from std_msgs.msg import Float32, Float32MultiArray, String
 #   to provide a set of wheel speeds for the outer and inner wheel accessed 
 #   through (turning_speed) <turning> 
 
-
 x_start = 0
 x_len = 2
 turn_radius = 0
