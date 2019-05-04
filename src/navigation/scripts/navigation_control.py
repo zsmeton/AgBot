@@ -28,7 +28,7 @@ def navigation_control():
     pub_wheel = rospy.Publisher('wheel_cmd_speed', String, queue_size=10)
 
     # Subscribes to topic 
-    sub_course = rospy.Subscriber('course_correct', String, course_callback)
+    sub_course = rospy.Subscriber('course_correct', Float32, course_callback)
 
     # Subscribes to topic 
     sub_collision = rospy.Subscriber('collision_state', Bool, collision_callback)

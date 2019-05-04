@@ -29,8 +29,6 @@ def isinf(x): inf = 1e5000; return x == inf or x == -inf
 DEBUG = False
 MODALS = 3
 call_back = False
-# TODO: Add ros_params to set desired_angle_min and max
-# TODO: Add system to not publish row locations until lidar data comes in
 desired_angle_min = -0.6
 desired_angle_max = 0.6
 x = np.linspace(-10, 10)
@@ -38,7 +36,7 @@ y = three_peaks(x, -5 + randn(), randn(), 5 + randn())
 crop_location_guess = [-5, 0, 5]  # we guess that our rows are at -5 and 5 relative to the heading based on prior info
 vvariable_mapping = np.vectorize(variable_mapping)
 
-
+# TODO: Add ros_params to set desired_angle_min and max
 def get_parameters():
     """ Sets the ros parameters if they exist"""
     if rospy.has_param('~row_guess'):
@@ -98,6 +96,7 @@ def field_vision():
     sub_lidar = rospy.Subscriber('scan', LaserScan, lidar_callback)
 
     rospy.init_node('field_vision')
+    # TODO: Try faster rates
     rate = rospy.Rate(1)  # 1hz
 
     # set up plotting for visualization
@@ -106,7 +105,7 @@ def field_vision():
     ax = fig.add_subplot(111)
     lidar_line, = ax.plot(x, y)
     crop_location_line = ax.scatter(crop_location_guess, np.zeros(len(crop_location_guess)), c='r', marker='+')
-
+    #model_line, = ax.plot(x, y)
 
     while not rospy.is_shutdown():
         # Align the data for modeling
@@ -118,23 +117,27 @@ def field_vision():
             print("Could not find optimal parameters")
             continue
 
+        a, b, c = crop_guess_temp # get unscaled corp locations for data visualization
         if DEBUG:
             # Plot aligned data and model
-            a, b, c = crop_guess_temp
             plt.scatter(xa, ya)
             plt.plot(x, three_peaks(x, a, b, c), '--r')
             plt.scatter(crop_guess_temp, np.zeros(len(crop_guess_temp)), c='r', marker='+')
             plt.title("Alinged data")
             plt.show()
 
+
         # Convert data back
         crop_guess_temp = convert_back(crop_guess_temp, sclr)
-        a, b, c = crop_guess_temp
-        pub_crop.publish(crop_location_to_ros_msg(crop_guess_temp))
+        # Only publish once lidar data comes in
+        if call_back:
+            pub_crop.publish(crop_location_to_ros_msg(crop_guess_temp))
 
         # Plot the data for visualization
         lidar_line.set_xdata(x)
         lidar_line.set_ydata(y)
+        lidar_line.set_xdata(x)
+        #lidar_line.set_ydata(convert_back(three_peaks(xa,a,b,c),sclr))
         crop_location_line.set_offsets(np.c_[crop_guess_temp, np.zeros(len(crop_guess_temp))])
         ax.relim()
         ax.autoscale_view()

@@ -1,7 +1,7 @@
 <launch>
-  <node pkg="navigation" name="field_vision" type="field_vision.py" output="screen">
+  <node pkg="navigation" name="field_vision" type="field_vision.py" output="screen" respawn="true">
   </node>
-  <node pkg="hokuyo_node" name="lidar" type="hokuyo_node">
+  <node pkg="hokuyo_node" name="lidar" type="hokuyo_node" respawn="true">
     <param name="port" type="string" value="/dev/ttyACM0"/>
   </node>
 </launch>

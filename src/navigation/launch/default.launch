@@ -1,6 +1,5 @@
 <launch>
-  <node pkg="navigation" name="field_vision" type="field_vision.py">
-    <param name="row_guess" value="[-5,5]"/>
+  <node pkg="navigation" name="field_vision" type="field_vision.py" output="screen" respawn="true">
   </node>
   <node pkg="navigation" name="course_correction" type="course_correction.py"/>
   <node pkg="navigation" name="end_detector" type="end_detector.py"/>
@@ -9,14 +8,13 @@
     <param name="row_skip" type="int" value="1"/>
     <param name="outer_speed_max" type="int" value="2"/>
   </node>
-  <node pkg="navigation" name="sensor_jetson" type="sensor_jetson.py"/>
   <node pkg="navigation" name="navigation_control" type="navigation_control.py"/>
   <node pkg="rosserial_python" name="motion_arduino" type="serial_node.py">
     <param name="port" type="string" value="/dev/ttyUSB1"/>
     <param name="baud" type="int" value="57600"/>
   </node>
   <node pkg="rosserial_python" name="sensor_arduino" type="serial_node.py">
-    <param name="port" type="string" value="/dev/ttyACM0"/>
+    <param name="port" type="string" value="/dev/ttyUSB0"/>
     <param name="baud" type="int" value="57600"/>
     <param name="ultrasonic1_trig" type="int" value="7"/>
     <param name="ultrasonic1_echo" type="int" value="6"/>
@@ -24,17 +22,8 @@
     <param name="ultrasonic2_echo" type="int" value="6"/>
     <param name="stopping_distance" type="int" value="2"/>
   </node>  
-  <node pkg="rosserial_python" name="sprayer_arduino" type="serial_node.py">
-    <param name="port" type="string" value="/dev/ttyUSB0"/>
-    <param name="baud" type="int" value="57600"/>
-  </node>
-  <node pkg="computer_vision" name="camera" type="camera.py"/>
-  <node pkg="computer_vision" name="plant_vision" type="plant_vision.py"/>
-  <node pkg="computer_vision" name="weed_mapper" type="weed_mapper.py"/>
-  <node pkg="sprayers" name="sprayer_manager" type="sprayer_manager.py"/>
-  <node pkg="hokuyo_node" name="lidar" type="hokuyo_node.cpp">
-    <param name="port" type="string" value="/dev/ttyUSB2"/>
-    <param name="port" type="string" value="/dev/ttyUSB2"/>
+  <node pkg="hokuyo_node" name="lidar" type="hokuyo_node" respawn="true">
+    <param name="port" type="string" value="/dev/ttyACM0"/>
   </node>
 </launch>
 
