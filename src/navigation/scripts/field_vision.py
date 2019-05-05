@@ -14,6 +14,30 @@ import os
 
 os.path.abspath(".")
 
+# [field_vision] identifies location of crops vs path using
+# (lidar) and publishes location relative to the center of the
+# robot for all three crops to (crop_location)
+
+# Constants
+DEBUG = False
+MODALS = 3
+
+# Parameters
+desired_angle_min = -0.6
+desired_angle_max = 0.6
+crop_location = [-0.34, 0, .34]  # The general placement of crop locations
+CROP_LOCATION_TOLERANCE = 1
+
+# Variables
+x = np.linspace(-10, 10)
+y = three_peaks(x, -5 + randn(), randn(), 5 + randn())
+aligned_location_guess = [-5, 0,
+                          5]  # we guess that our rows are at -5 and 5 relative to the heading based on prior info
+call_back = False
+
+# Vectorized function
+vvariable_mapping = np.vectorize(variable_mapping)
+
 
 def isnan(x): return type(x) is float and x != x
 
@@ -21,27 +45,12 @@ def isnan(x): return type(x) is float and x != x
 def isinf(x): inf = 1e5000; return x == inf or x == -inf
 
 
-# [field_vision] identifies location of crops vs path using
-# (lidar) and publishes location relative to the center of the
-# robot for all three crops to (crop_location)
-
-# Parameters and constants
-DEBUG = False
-MODALS = 3
-call_back = False
-desired_angle_min = -0.6
-desired_angle_max = 0.6
-x = np.linspace(-10, 10)
-y = three_peaks(x, -5 + randn(), randn(), 5 + randn())
-crop_location_guess = [-5, 0, 5]  # we guess that our rows are at -5 and 5 relative to the heading based on prior info
-vvariable_mapping = np.vectorize(variable_mapping)
-
 # TODO: Add ros_params to set desired_angle_min and max
 def get_parameters():
     """ Sets the ros parameters if they exist"""
     if rospy.has_param('~row_guess'):
-        global crop_location_guess
-        crop_location_guess = rospy.get_param('~row_guess')
+        global aligned_location_guess
+        aligned_location_guess = rospy.get_param('~row_guess')
 
 
 def lidar_callback(msg):
@@ -73,8 +82,7 @@ def lidar_callback(msg):
         global y
         y = vvariable_mapping(y, y.min(), y.max(), 0, 1)
     except ZeroDivisionError:
-        print("Could not properly map lidar data, using old lidar data for detection")
-
+        print("Error: Could not properly map lidar data, using old lidar data for detection")
 
 
 def crop_location_to_ros_msg(crop_location):
@@ -104,20 +112,19 @@ def field_vision():
     fig = plt.figure()
     ax = fig.add_subplot(111)
     lidar_line, = ax.plot(x, y)
-    crop_location_line = ax.scatter(crop_location_guess, np.zeros(len(crop_location_guess)), c='r', marker='+')
-    #model_line, = ax.plot(x, y)
+    crop_location_line = ax.scatter(aligned_location_guess, np.zeros(len(aligned_location_guess)), c='r', marker='+')
 
     while not rospy.is_shutdown():
         # Align the data for modeling
         xa, ya, sclr = align_data(tuple(x), tuple(y))
         # Model the data
         try:
-            crop_guess_temp = find_rows(xa, ya, crop_location_guess)
+            crop_guess_temp = find_rows(xa, ya, aligned_location_guess)
         except RuntimeError:
-            print("Could not find optimal parameters")
+            print("Error: Could not find optimal parameters")
             continue
 
-        a, b, c = crop_guess_temp # get unscaled corp locations for data visualization
+        a, b, c = crop_guess_temp  # get unscaled corp locations for data visualization
         if DEBUG:
             # Plot aligned data and model
             plt.scatter(xa, ya)
@@ -126,18 +133,21 @@ def field_vision():
             plt.title("Alinged data")
             plt.show()
 
-
         # Convert data back
         crop_guess_temp = convert_back(crop_guess_temp, sclr)
         # Only publish once lidar data comes in
+        # And if the crop guess is within a reasonable range, avoid over correcting after turning or when between crops
+        reasonable = all(
+            [abs(guess - crop_location[i]) < CROP_LOCATION_TOLERANCE for i, guess in enumerate(crop_guess_temp)])
         if call_back:
-            pub_crop.publish(crop_location_to_ros_msg(crop_guess_temp))
-
+            if reasonable:
+                pub_crop.publish(crop_location_to_ros_msg(crop_guess_temp))
+            else:
+                print("Error: Not publishing crop location as current guess is unreasonable")
         # Plot the data for visualization
         lidar_line.set_xdata(x)
         lidar_line.set_ydata(y)
         lidar_line.set_xdata(x)
-        #lidar_line.set_ydata(convert_back(three_peaks(xa,a,b,c),sclr))
         crop_location_line.set_offsets(np.c_[crop_guess_temp, np.zeros(len(crop_guess_temp))])
         ax.relim()
         ax.autoscale_view()
@@ -145,9 +155,8 @@ def field_vision():
 
         rate.sleep()
 
-
-if __name__ == '__main__':
-    try:
-        field_vision()
-    except rospy.ROSInterruptException:
-        pass
+        if __name__ == '__main__':
+            try:
+                field_vision()
+            except rospy.ROSInterruptException:
+                pass

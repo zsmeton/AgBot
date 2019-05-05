@@ -14,12 +14,12 @@ import matplotlib.pyplot as plt
 # Set up the data to model
 x = np.linspace(-10, 10)
 y = three_peaks(x, -5 + randn(), randn(), 5 + randn())
-crop_location_guess = [-5, 0, 5]  # we guess that our rows are at -5 and 5 relative to the heading based on prior info
+aligned_location_guess = [-5, 0, 5]  # we guess that our rows are at -5 and 5 relative to the heading based on prior info
 
 # Align the data for modeling
 xa, ya, sclr = align_data(tuple(x), tuple(y))
 # Model the data
-crop_guess_temp = find_rows(xa, ya, crop_location_guess)
+crop_guess_temp = find_rows(xa, ya, aligned_location_guess)
 
 # Plot aligned data and model
 a, b, c = crop_guess_temp

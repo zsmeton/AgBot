@@ -13,9 +13,14 @@ import time
 # left_wheel_pwd/speed = left_wheel_pwd/speed + u(t)
 # right_wheel_pwd/speed = right_wheel_pwd/speed - u(t)
 
+# constants
+DT_TOO_BIG = 10
+DT_REPLACEMENT = 1
+
 # variables
 u_t = 0
 pid_last_runtime = time.time()
+
 # paramters
 k_p = 5
 k_i = 3
@@ -35,14 +40,16 @@ def get_parameters():
         k_d = rospy.get_param('~k_d')
 
 
-# TODO: Look into adding a reset sytem to reset the PID so the robot turning doesn't fuck the system
 def crop_callback(data):
     # Check for correct input dimensions
-    assert(len(data.data) == 3), "Course Correction was designed for three crop locations"
+    assert(len(data.data) == 3), "Error: Course Correction was designed for three crop locations"
     # Run PID on input
     global u_t, pid_last_runtime
     e_t = 0-data.data[1]  # error is based on center value
-    dt = time.time() - pid_last_runtime
+    lasped_time = time.time() - pid_last_runtime
+    # Set dt to the lasped time if the lapsed time is within an acceptable range
+    # if dt is too large the robots correction will be too great and the controller will be screwed
+    dt = time.time() - pid_last_runtime if lasped_time < DT_TOO_BIG else DT_REPLACEMENT
     u_t = PID(error=e_t, dt=dt, k_p=k_p, k_i=k_i, k_d=k_d)
     pid_last_runtime = time.time()
 
