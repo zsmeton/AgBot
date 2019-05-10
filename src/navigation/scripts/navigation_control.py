@@ -67,8 +67,8 @@ def get_speeds():
         speeds[1] = DEFAULT_SPEED * (1 - WHEEL_DIST / turn_val)
 
     else:  # Normal drive, course correction
-        # TODO Figure out which side needs to be modified for correction
-        if course_val > 0:  # TODO Should this be deadzoned?
+        # TODO Correct proper side
+        if course_val > 0:  # TODO Deadzone
             speeds[0] += course_val
         else:
             speeds[1] += course_val
@@ -91,7 +91,7 @@ def navigation_control():
 
     rospy.init_node('navigation_control')
 
-    # TODO Set appropriate rate
+    # TODO Modify rate
     rate = rospy.Rate(5)  # 5 Hz
     
     while not rospy.is_shutdown():
