@@ -32,8 +32,7 @@ CROP_LOCATION_TOLERANCE = .2
 # Variables
 x = np.linspace(-10, 10)
 y = three_peaks(x, -5 + randn(), randn(), 5 + randn())
-aligned_location_guess = [-5, 0,
-                          5]  # we guess that our rows are at -5 and 5 relative to the heading based on prior info
+aligned_location_guess = [-5, 0, 5]  # we guess that our rows are at -5 and 5 relative to the heading based on prior info
 call_back = False
 
 # Vectorized function

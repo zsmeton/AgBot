@@ -55,6 +55,9 @@ def crop_callback(data):
 
 
 def course_correction():
+    # get parameters from launch file
+    get_parameters()
+
     # Publisher to topic crop_lcation
     pub_course = rospy.Publisher('course_correct', Float32, queue_size=10)
 
@@ -62,7 +65,7 @@ def course_correction():
     sub_crop = rospy.Subscriber('crop_location', Float32MultiArray, crop_callback)
 
     rospy.init_node('course_correction')
-    rate = rospy.Rate(1) # 1hz
+    rate = rospy.Rate(5) # 1hz
     
     while not rospy.is_shutdown():
         # Publishes "TEST" to course_correct
