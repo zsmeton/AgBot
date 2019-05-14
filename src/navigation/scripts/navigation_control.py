@@ -58,7 +58,7 @@ def get_speeds():
     """ Generates speeds for tank drive train, normalized to [-1, 1] """
     speeds = [DEFAULT_SPEED, DEFAULT_SPEED]  # Default speeds
 
-    if collision:  # Collision, set speeds to 0
+    if collision_state:  # Collision, set speeds to 0
         speeds = [0., 0.]
 
     elif end_state:  # End state, set turn
@@ -71,7 +71,7 @@ def get_speeds():
         if course_val > 0:  # TODO Deadzone
             speeds[0] += course_val
         else:
-            speeds[1] += course_val
+            speeds[1] -= course_val
 
     # Filter out-of-bound speeds to [-1, 1]
     speeds = [min(max(speed, -1.), 1.) for speed in speeds]
@@ -95,7 +95,7 @@ def navigation_control():
     rate = rospy.Rate(5)  # 5 Hz
     
     while not rospy.is_shutdown():
-        pub_wheel.publish(get_message())
+        pub_wheel.publish(generate_message())
         rate.sleep()
         
 

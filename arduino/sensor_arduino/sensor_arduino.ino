@@ -58,7 +58,8 @@ void setup() {
   nh.advertise(pub_compass);
   nh.advertise(pub_gps);
 
-  //getROSParameters();
+  // Setup ros parameters
+  getROSParameters();
 }
 
 void loop() {

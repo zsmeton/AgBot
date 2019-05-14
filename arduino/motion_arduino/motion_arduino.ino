@@ -2,7 +2,7 @@
 // license removed for brevity
 #include <ros.h>
 // Include message header files
-#include <std_msgs/String.h>
+#include <std_msgs/Float32MultiArray.h>
 
 /* [motion_arduino] uses (drive_wheel_encoder) <encoder> and 
 *  (wheel_cmd_speed) <wheel> to adjust each drive motors speed, 
@@ -12,39 +12,49 @@
 // This node is a TEMPLATE
 
 // Create any pin objects
-const int ledPin = 13;
+int leftFrontMotor = 13;
+int leftRearMotor = 12;
+int rightFrontMotor = 11;
+int rightRearMotor = 10;
+int leftPWM = 122;
+int rightPWM = 122;
 
 // Create the node handle which allows creation
 // of publishers and subscribers and does serial
 // communication
 ros::NodeHandle  nh;
 
-// Create message object(s) for pub/sub 
-std_msgs::String position_msg;
-
-// Create publisher(s)
-ros::Publisher pub_position("robot_pos_delta", &position_msg);
-
-// Create call back functions for subscriber(s)
-void encoder_callback(const std_msgs::String& encoder_msg){
-  if(encoder_msg.data == "TEST"){
-    digitalWrite(ledPin, HIGH);
-  }else{
-    digitalWrite(ledPin, HIGH);
-  }
-}
-
-void wheel_callback(const std_msgs::String& wheel_msg){
-  if(wheel_msg.data == "TEST"){
-    digitalWrite(ledPin, HIGH);
-  }else{
-    digitalWrite(ledPin, HIGH);
-  }
-}
-
 // Create subsciber(s)
-ros::Subscriber<std_msgs::String> sub_encoder("drive_wheel_encoder", &encoder_callback);
-ros::Subscriber<std_msgs::String> sub_wheel("wheel_cmd_speed", &wheel_callback);
+ros::Subscriber<std_msgs::Float32MultiArray> sub_wheel("wheel_cmd_speed", &wheel_callback);
+
+void wheel_callback(const std_msgs::Float32MultiArray& wheel_msg){
+  leftPWM = (int) 255*wheel_msg.data[0];
+  rightPWM = (int) 255*wheel_msg.data[1];
+}
+
+void getROSParameters() {
+  while (!nh.connected()) {
+    nh.spinOnce();
+  }
+  int leftFront;
+  int leftRear;
+  int rightFront;
+  int rightRear;
+
+  if (nh.getParam("~left_front", &leftFront)) {
+    leftFrontMotor = leftFront;
+  }
+  if (nh.getParam("~left_rear", &leftRear)) {
+    leftRearMotor = leftRear;
+  }
+  if (nh.getParam("~right_front", &rightFront)) {
+    rightFrontMotor = rightFront;
+  }
+  if (nh.getParam("~right_rear", &rightRear)) {
+    rightRearMotor = rightRear;
+  }
+}
+
 
 void setup(){
   // Set mode of pins
@@ -62,8 +72,9 @@ void setup(){
 }
 
 void loop(){
-  position_msg.data = "TEST";
-  pub_position.publish(&position_msg);
   nh.spinOnce();
-  delay(1000); // 1HZish
+  analogWrite(leftFrontMotor, leftPWM);
+  analogWrite(leftRearMotor, leftPWM);
+  analogWrite(rightFrontMotor, rightPWM);
+  analogWrite(rightRearMotor, rightPWM);
 }
