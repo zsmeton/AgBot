@@ -81,7 +81,7 @@ def get_speeds():
 
 def navigation_control():
     # Publisher to topic crop_lcation
-    pub_wheel = rospy.Publisher('wheel_cmd_speed', Float32MultiArray)
+    pub_wheel = rospy.Publisher('wheel_cmd_speed', Float32MultiArray, queue_size=10)
 
     # Subscribers
     sub_course = rospy.Subscriber('course_correct', Float32, course_callback)
