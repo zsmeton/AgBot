@@ -24,9 +24,11 @@ DEBUG = False
 MODALS = 3
 
 # Parameters
-desired_angle_min = -0.6
-desired_angle_max = 0.6
-crop_location = [-0.34, 0, .34]  # The general placement of crop locations
+# OG: -0.6 & 0.6
+desired_angle_min = -0.7667
+desired_angle_max = 0.7667
+# Distance between each crop: 30 in or 0.762 m
+crop_location = [-0.762, 0, 0.762]  # The general placement of crop locations
 CROP_LOCATION_TOLERANCE = .2
 
 # Variables

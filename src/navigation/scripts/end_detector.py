@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # license removed for brevity
 import rospy
+import time
 from std_msgs.msg import String
 from std_msgs.msg import Bool
 from sensor_msgs.msg import LaserScan
@@ -16,29 +17,28 @@ def lidar_callback(msg):
     global message
     global previous
     global counter
-    print(msg.ranges[180*4])
+    #print(msg.ranges[-45*4])
     if(counter == 0):
         for data in msg.ranges:
             previous.append(data)
             counter = 1
-        print(previous[180*4])
+        #print(previous[180*4])
     elif(counter != 0):
         check_two = 0
         for i,data in enumerate(msg.ranges):
             check_two = abs(data - previous[i])
+
             #Crops are around 6 - 12 inches tall
             #1 inch = 0.0254 m   |   0.3048 m = 12 inches
 
-            #I am following the measurements said by AgBot,
-            #We might need to change this in the future.cle
+            # FALSE = Not End
+            # TRUE  = End
 
             if(check_two > 0.3048):
                 message = False
                 break
             elif(check_two < 0.3048):
                 message = True
-            elif(i == 180*4):
-                print(check_two)
             counter = 0
     print(message)
     print("  ")

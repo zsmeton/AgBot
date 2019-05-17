@@ -24,13 +24,15 @@ int rightPWM = 122;
 // communication
 ros::NodeHandle  nh;
 
-// Create subsciber(s)
-ros::Subscriber<std_msgs::Float32MultiArray> sub_wheel("wheel_cmd_speed", &wheel_callback);
-
+// Create callback methods
 void wheel_callback(const std_msgs::Float32MultiArray& wheel_msg){
   leftPWM = (int) 255*wheel_msg.data[0];
   rightPWM = (int) 255*wheel_msg.data[1];
 }
+
+// Create subsciber(s)
+ros::Subscriber<std_msgs::Float32MultiArray> sub_wheel("wheel_cmd_speed", wheel_callback);
+
 
 void getROSParameters() {
   while (!nh.connected()) {
@@ -58,16 +60,14 @@ void getROSParameters() {
 
 void setup(){
   // Set mode of pins
-  pinMode(ledPin, OUTPUT);
+  pinMode(leftFrontMotor, OUTPUT);
+  pinMode(rightFrontMotor, OUTPUT);
+  pinMode(leftRearMotor, OUTPUT);
+  pinMode(rightRearMotor, OUTPUT);
   
   // Initialize the arduino node
-  nh.initNode();
+  nh.initNode();                                                  
 
-  // Advertise topic(s)
-  nh.advertise(pub_position);
-
-  // Subscribe to topic(s)
-  nh.subscribe(sub_encoder);
   nh.subscribe(sub_wheel);
 }
 

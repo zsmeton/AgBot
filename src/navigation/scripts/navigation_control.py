@@ -13,8 +13,8 @@ collision_state = False
 end_state = False
 turn_val = 0.
 
-DEFAULT_SPEED = 0.5
-WHEEL_DIST = 0.25
+DEFAULT_SPEED = 0.1 #TODO
+WHEEL_DIST = 0.2286
 
 
 def course_callback(data):
