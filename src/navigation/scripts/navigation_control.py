@@ -11,7 +11,7 @@ from std_msgs.msg import Bool, Float32, Float32MultiArray, MultiArrayDimension
 course_val = 0.
 collision_state = False
 end_state = False
-turn_val = 0.
+turn_val = 0.+
 
 DEFAULT_SPEED = 0.1 #TODO
 WHEEL_DIST = 0.2286
@@ -67,14 +67,13 @@ def get_speeds():
         speeds[1] = DEFAULT_SPEED * (1 - WHEEL_DIST / turn_val)
 
     else:  # Normal drive, course correction
-        # TODO Correct proper side
-        if course_val > 0:  # TODO Deadzone
+        if course_val > 0:
             speeds[0] += course_val
         else:
             speeds[1] -= course_val
 
     # Filter out-of-bound speeds to [-1, 1]
-    speeds = [min(max(speed, -1.), 1.) for speed in speeds]
+    speeds = [min(max(speed, 0.), 1.) for speed in speeds]
 
     return speeds
 
@@ -87,8 +86,6 @@ def navigation_control():
     sub_course = rospy.Subscriber('course_correct', Float32, course_callback)
     sub_collision = rospy.Subscriber('collision_state', Bool, collision_callback)
     sub_end = rospy.Subscriber('end_of_field_state', Bool, end_callback)
-    sub_turning = rospy.Subscriber('turn_radius', Float32, turning_callback)
-
     rospy.init_node('navigation_control')
 
     # TODO Modify rate

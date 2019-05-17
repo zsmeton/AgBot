@@ -4,10 +4,6 @@
   <node pkg="navigation" name="course_correction" type="course_correction.py"/>
   <node pkg="navigation" name="end_detector" type="end_detector.py"/>
   <node pkg="navigation" name="collision_detector" type="collision_detector.py"/>
-  <node pkg="navigation" name="turning_pathfinder" type="turning_pathfinder.py">
-    <param name="row_skip" type="int" value="1"/>
-    <param name="outer_speed_max" type="int" value="2"/>
-  </node>
   <node pkg="navigation" name="navigation_control" type="navigation_control.py"/>
   <node pkg="rosserial_python" name="motion_arduino" type="serial_node.py">
     <param name="port" type="string" value="/dev/ttyUSB1"/>

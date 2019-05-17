@@ -28,8 +28,8 @@ MODALS = 3
 desired_angle_min = -0.7667
 desired_angle_max = 0.7667
 # Distance between each crop: 30 in or 0.762 m
-crop_location = [-0.762, 0, 0.762]  # The general placement of crop locations
-CROP_LOCATION_TOLERANCE = .2
+center_crop_location = 0  # The general placement of the center crop location
+CROP_LOCATION_TOLERANCE = .3
 
 # Variables
 x = np.linspace(-10, 10)
@@ -56,7 +56,7 @@ def get_parameters():
 
 
 def lidar_callback(msg):
-    global call_backs
+    global call_back
     call_back = True
     # Create a vector of angles from the minimum angle to the maximum angle of the length of the message data
     angles = np.linspace(msg.angle_max, msg.angle_min, len(msg.ranges))
@@ -113,7 +113,7 @@ def field_vision():
 
     rospy.init_node('field_vision')
     # TODO: Try faster rates
-    rate = rospy.Rate(2)  # 1hz
+    rate = rospy.Rate(20)  # 1hz
 
     # set up plotting for visualization
     plt.ion()
@@ -151,8 +151,7 @@ def field_vision():
         crop_guess_temp = convert_back(crop_guess_temp, sclr)
         # Only publish once lidar data comes in
         # And if the crop guess is within a reasonable range, avoid over correcting after turning or when between crops
-        reasonable = all(
-            [abs(guess - crop_location[i]) < CROP_LOCATION_TOLERANCE for i, guess in enumerate(crop_guess_temp)])
+        reasonable = abs(crop_guess_temp[1] - center_crop_location) < CROP_LOCATION_TOLERANCE
         if call_back:
             if reasonable:
                 pub_crop.publish(crop_location_to_ros_msg(crop_guess_temp))
